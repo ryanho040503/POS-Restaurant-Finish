@@ -18,8 +18,9 @@ app.use(express.json()); // Parse JSON bodies
 app.use(cookieParser()); // Parse cookies
 
 const allowedOrigins = [
-  'https://classy-moxie-5c2a08.netlify.app',
-  'http://localhost:8000' // Cho môi trường dev
+    'https://classy-moxie-5c2a08.netlify.app',
+    'http://localhost:5173', // Cho môi trường dev
+    'https://localhost:5173'
 ];
 
 app.use(cors({
@@ -27,6 +28,17 @@ app.use(cors({
     // origin: ['https://localhost:5173']
     // origin: true,
     origin: allowedOrigins,
+    // origin: function (origin, callback) {
+    //     // Trường hợp request không có origin (như Postman, curl) vẫn cho qua
+    //     console.log('CORS Origin:', origin);
+    //     if (!origin) return callback(null, true);
+
+    //     if (allowedOrigins.indexOf(origin) !== -1) {
+    //         callback(null, true);
+    //     } else {
+    //         callback(new Error('Not allowed by CORS'));
+    //     }
+    // },
     allowedHeaders: ['Content-Type', 'Authorization'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
