@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 
 function Layout() {
 
+  console.log('Backend URL:', import.meta.env.VITE_BACKEND_URL);
   const location = useLocation();
   const isLoading = useLoadData();
   const hideHeaderRoutes = ["/auth"];

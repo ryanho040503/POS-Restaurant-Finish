@@ -20,7 +20,7 @@ app.use(cors({
     credentials: true,
     // origin: ['https://localhost:5173']
     // origin: true,
-    origin: ['https://sage-donut-b261e0.netlify.app']
+    origin: ['https://sage-donut-b261e0.netlify.app', 'http://localhost:5173']
 }));
 
 // Root Endpoint
