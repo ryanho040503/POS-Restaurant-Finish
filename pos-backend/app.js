@@ -19,7 +19,8 @@ app.use(cookieParser()); // Parse cookies
 app.use(cors({
     credentials: true,
     // origin: ['https://localhost:5173']
-    origin: true
+    // origin: true,
+    origin: ['https://sage-donut-b261e0.netlify.app']
 }));
 
 // Root Endpoint

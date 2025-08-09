@@ -1,4 +1,6 @@
+
 import axios from 'axios';
+
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_BACKEND_URL,
@@ -17,3 +19,5 @@ export const logout = () => api.post('/api/user/logout');
 
 export const addTable = (data) => api.post ("/api/table/",data); 
 export const getTables = (data) => api.get("/api/table");
+
+console.log('Backend URL:', import.meta.env.VITE_BACKEND_URL);
