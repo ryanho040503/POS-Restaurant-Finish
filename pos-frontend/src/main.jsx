@@ -15,6 +15,8 @@ const queryClient = new QueryClient ({
   }
 })
 
+console.log('Backend URL:', import.meta.env.VITE_BACKEND_URL);
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
