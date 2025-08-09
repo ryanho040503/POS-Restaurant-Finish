@@ -15,6 +15,8 @@ const queryClient = new QueryClient ({
   }
 })
 
+console.log('ENV Variables:', import.meta.env)
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
