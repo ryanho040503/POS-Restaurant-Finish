@@ -26,7 +26,9 @@ app.use(cors({
     credentials: true,
     // origin: ['https://localhost:5173']
     // origin: true,
-    origin: ['https://classy-moxie-5c2a08.netlify.app/auth', 'http://localhost:5173']
+    origin: ['https://classy-moxie-5c2a08.netlify.app/auth', 'http://localhost:5173'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
 // Root Endpoint
