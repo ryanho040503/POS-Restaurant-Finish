@@ -16,12 +16,35 @@ connectDB();
 // Middleware
 app.use(express.json()); // Parse JSON bodies
 app.use(cookieParser()); // Parse cookies
+
+const allowedOrigins = [
+  'https://classy-moxie-5c2a08.netlify.app',
+  'http://localhost:8000' // Cho môi trường dev
+];
+
 app.use(cors({
-    credentials: true,
-    // origin: ['https://localhost:5173']
-    // origin: true,
-    origin: ['https://resplendent-choux-56ed3d.netlify.app/auth', 'http://localhost:5173']
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Xử lý preflight request
+app.options('*', cors());
+
+
+// app.use(cors({
+//     credentials: true,
+//     // origin: ['https://localhost:5173']
+//     // origin: true,
+//     origin: ['https://resplendent-choux-56ed3d.netlify.app/auth', 'http://localhost:5173']
+// }));
 
 // Root Endpoint
 app.get("/", (req, res) => {
