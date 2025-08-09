@@ -12,6 +12,18 @@ const api = axios.create({
     }
 })
 
+api.interceptors.response.use(
+  response => response,
+  error => {
+    if (error.code === 'ERR_NETWORK') {
+      console.error('CORS Error:', error);
+      alert('Không thể kết nối đến server. Vui lòng thử lại sau.');
+    }
+    return Promise.reject(error);
+  }
+);
+
+
 // API Endpoints
 export const login = (data) => api.post('/api/user/login', data);
 export const register = (data) => api.post('/api/user/register', data);
